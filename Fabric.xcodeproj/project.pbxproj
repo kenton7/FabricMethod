@@ -10,10 +10,16 @@
 		0938D9792B49838B0088CF89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D9782B49838B0088CF89 /* AppDelegate.swift */; };
 		0938D97B2B49838B0088CF89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D97A2B49838B0088CF89 /* SceneDelegate.swift */; };
 		0938D97D2B49838B0088CF89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D97C2B49838B0088CF89 /* ViewController.swift */; };
-		0938D9802B49838B0088CF89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0938D97E2B49838B0088CF89 /* Main.storyboard */; };
 		0938D9832B49838B0088CF89 /* Fabric.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0938D9812B49838B0088CF89 /* Fabric.xcdatamodeld */; };
 		0938D9852B49838D0088CF89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0938D9842B49838D0088CF89 /* Assets.xcassets */; };
 		0938D9882B49838D0088CF89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0938D9862B49838D0088CF89 /* LaunchScreen.storyboard */; };
+		0938D9902B498E600088CF89 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D98F2B498E600088CF89 /* CharactersModel.swift */; };
+		0938D9922B498F5B0088CF89 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D9912B498F5B0088CF89 /* NetworkService.swift */; };
+		0938D9942B4992F80088CF89 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D9932B4992F80088CF89 /* Views.swift */; };
+		0938D9962B49987E0088CF89 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D9952B49987E0088CF89 /* CoreDataStack.swift */; };
+		0938D9992B49994C0088CF89 /* CharacterData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D9972B49994C0088CF89 /* CharacterData+CoreDataClass.swift */; };
+		0938D99A2B49994C0088CF89 /* CharacterData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D9982B49994C0088CF89 /* CharacterData+CoreDataProperties.swift */; };
+		0938D99C2B4999E80088CF89 /* ModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938D99B2B4999E80088CF89 /* ModelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +27,17 @@
 		0938D9782B49838B0088CF89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0938D97A2B49838B0088CF89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0938D97C2B49838B0088CF89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0938D97F2B49838B0088CF89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0938D9822B49838B0088CF89 /* Fabric.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fabric.xcdatamodel; sourceTree = "<group>"; };
 		0938D9842B49838D0088CF89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0938D9872B49838D0088CF89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0938D9892B49838D0088CF89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0938D98F2B498E600088CF89 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
+		0938D9912B498F5B0088CF89 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		0938D9932B4992F80088CF89 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		0938D9952B49987E0088CF89 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		0938D9972B49994C0088CF89 /* CharacterData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0938D9982B49994C0088CF89 /* CharacterData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0938D99B2B4999E80088CF89 /* ModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +54,8 @@
 		0938D96C2B49838B0088CF89 = {
 			isa = PBXGroup;
 			children = (
+				0938D9972B49994C0088CF89 /* CharacterData+CoreDataClass.swift */,
+				0938D9982B49994C0088CF89 /* CharacterData+CoreDataProperties.swift */,
 				0938D9772B49838B0088CF89 /* Fabric */,
 				0938D9762B49838B0088CF89 /* Products */,
 			);
@@ -61,11 +75,15 @@
 				0938D9782B49838B0088CF89 /* AppDelegate.swift */,
 				0938D97A2B49838B0088CF89 /* SceneDelegate.swift */,
 				0938D97C2B49838B0088CF89 /* ViewController.swift */,
-				0938D97E2B49838B0088CF89 /* Main.storyboard */,
 				0938D9842B49838D0088CF89 /* Assets.xcassets */,
 				0938D9862B49838D0088CF89 /* LaunchScreen.storyboard */,
 				0938D9892B49838D0088CF89 /* Info.plist */,
 				0938D9812B49838B0088CF89 /* Fabric.xcdatamodeld */,
+				0938D98F2B498E600088CF89 /* CharactersModel.swift */,
+				0938D9912B498F5B0088CF89 /* NetworkService.swift */,
+				0938D9932B4992F80088CF89 /* Views.swift */,
+				0938D9952B49987E0088CF89 /* CoreDataStack.swift */,
+				0938D99B2B4999E80088CF89 /* ModelFactory.swift */,
 			);
 			path = Fabric;
 			sourceTree = "<group>";
@@ -130,7 +148,6 @@
 			files = (
 				0938D9882B49838D0088CF89 /* LaunchScreen.storyboard in Resources */,
 				0938D9852B49838D0088CF89 /* Assets.xcassets in Resources */,
-				0938D9802B49838B0088CF89 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +158,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0938D9902B498E600088CF89 /* CharactersModel.swift in Sources */,
 				0938D97D2B49838B0088CF89 /* ViewController.swift in Sources */,
+				0938D9992B49994C0088CF89 /* CharacterData+CoreDataClass.swift in Sources */,
+				0938D99C2B4999E80088CF89 /* ModelFactory.swift in Sources */,
 				0938D9792B49838B0088CF89 /* AppDelegate.swift in Sources */,
+				0938D9942B4992F80088CF89 /* Views.swift in Sources */,
 				0938D9832B49838B0088CF89 /* Fabric.xcdatamodeld in Sources */,
+				0938D9922B498F5B0088CF89 /* NetworkService.swift in Sources */,
+				0938D99A2B49994C0088CF89 /* CharacterData+CoreDataProperties.swift in Sources */,
 				0938D97B2B49838B0088CF89 /* SceneDelegate.swift in Sources */,
+				0938D9962B49987E0088CF89 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0938D97E2B49838B0088CF89 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0938D97F2B49838B0088CF89 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0938D9862B49838D0088CF89 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -301,9 +317,8 @@
 				INFOPLIST_FILE = Fabric/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,9 +326,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kuznetsovIlya.Fabric;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -329,9 +347,8 @@
 				INFOPLIST_FILE = Fabric/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,9 +356,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kuznetsovIlya.Fabric;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
