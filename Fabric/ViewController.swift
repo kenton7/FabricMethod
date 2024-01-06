@@ -44,20 +44,9 @@ final class ViewController: UIViewController {
             }
         }
         
-        mainViews.saveToDataBaseButton.addTarget(self, action: #selector(saveToCoreData), for: .touchUpInside)
         mainViews.nextRandomCharacterButton.addTarget(self, action: #selector(nextRandomCharacter), for: .touchUpInside)
     }
-    
-    @objc private func saveToCoreData() {
-        let character = CharacterData(context: container.viewContext)
-        do {
-            try self.container.viewContext.save()
-        }
-        catch let error {
-            print(error)
-        }
-    }
-    
+
     @objc private func nextRandomCharacter() {
         let randomID = Int.random(in: 1...826)
         NetworkService.shared.getCharacters(id: randomID) { result in

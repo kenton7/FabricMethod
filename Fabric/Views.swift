@@ -26,17 +26,6 @@ final class Views: UIView {
         return label
     }()
     
-    lazy var saveToDataBaseButton: UIButton = {
-        let button = UIButton()
-        button.frame = CGRect(x: 10, y: 10, width: 200, height: 50)
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Сохранить персонажа в базу данных", for: .normal)
-        button.titleLabel?.textColor = .white
-        button.backgroundColor = .systemGreen
-        return button
-    }()
-    
     lazy var nextRandomCharacterButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 10, y: 10, width: 200, height: 50)
@@ -55,7 +44,6 @@ final class Views: UIView {
         
         addSubview(characterName)
         addSubview(characterImageView)
-        addSubview(saveToDataBaseButton)
         addSubview(nextRandomCharacterButton)
         
         setConstraints()
@@ -67,11 +55,7 @@ final class Views: UIView {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            
-            saveToDataBaseButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            saveToDataBaseButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            saveToDataBaseButton.bottomAnchor.constraint(equalTo: characterImageView.topAnchor, constant: -10),
-            
+
             characterImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             characterImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             characterImageView.widthAnchor.constraint(equalToConstant: 300),
