@@ -37,6 +37,15 @@ final class Views: UIView {
         return button
     }()
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+       let activityView = UIActivityIndicatorView()
+        activityView.translatesAutoresizingMaskIntoConstraints = false
+        activityView.style = .large
+        activityView.isHidden = true
+        activityView.color = .white
+        return activityView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -45,6 +54,7 @@ final class Views: UIView {
         addSubview(characterName)
         addSubview(characterImageView)
         addSubview(nextRandomCharacterButton)
+        addSubview(activityIndicator)
         
         setConstraints()
     }
@@ -67,6 +77,9 @@ final class Views: UIView {
             nextRandomCharacterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             nextRandomCharacterButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             nextRandomCharacterButton.topAnchor.constraint(equalTo: characterName.bottomAnchor, constant: 10),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: characterImageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: characterImageView.centerYAnchor)
         ])
     }
     

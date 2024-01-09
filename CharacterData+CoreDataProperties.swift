@@ -33,7 +33,6 @@ extension CharacterData: CharacterProtocol {
         self.image = image
         self.name = name
     }
-    
 }
 
 extension CharacterData {

@@ -13,7 +13,7 @@ class NetworkService {
     
     private init() {}
     
-    func getCharacters(id: Int, completion: @escaping (Result<CharacterModel, Error>) -> Void) {
+    func getCharacters(id: Int, completion: @escaping (Result<CharacterProtocol, Error>) -> Void) {
         guard let url = URL(string: "https://rickandmortyapi.com/api/character/\(id)") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
