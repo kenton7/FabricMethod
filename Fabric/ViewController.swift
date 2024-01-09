@@ -13,6 +13,8 @@ final class ViewController: UIViewController {
     private let container = CoreDataStack.shared.containter
     private let factory = ModelFactory.shared
     
+    private let requestToCoreData = CharacterData.fetchRequest()
+    
     private var randomCharacterID = Int.random(in: 1...826)
     private let mainViews = Views()
 
@@ -24,58 +26,53 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        factory.makeModel { result in
-            switch result {
-            case .success(let model):
-                guard let url = URL(string: model.image) else { return }
-                let privateQueue = DispatchQueue(label: "networkQueue", qos: .utility)
-                privateQueue.async {
-                    URLSession.shared.dataTask(with: url) { data, _, _ in
-                        if let data = data, let image = UIImage(data: data) {
-                            DispatchQueue.main.async {
-                                self.mainViews.characterImageView.image = image
-                                self.mainViews.characterName.text = model.name
-                            }
-                        }
-                    }.resume()
-                }
-            case .failure(let error):
-                print("error \(error)")
+        do {
+            let characterInCoreData = try container.viewContext.fetch(requestToCoreData)
+            if characterInCoreData.isEmpty {
+                print(characterInCoreData.isEmpty)
+                createSomeModel(dataSource: .network)
+            } else {
+                createSomeModel(dataSource: .coreData)
             }
+        }
+        catch {
+            print("can't read context in core data")
         }
         
         mainViews.nextRandomCharacterButton.addTarget(self, action: #selector(nextRandomCharacter), for: .touchUpInside)
     }
-
-    @objc private func nextRandomCharacter() {
-        let randomID = Int.random(in: 1...826)
-        NetworkService.shared.getCharacters(id: randomID) { result in
+    
+    func createSomeModel(dataSource: DataSource) {
+        ModelFactory.shared.makeModel(dataSource: dataSource) { result in
             switch result {
             case .success(let model):
-                //guard let image = model.image, let imageURL = URL(string: image) else { return }
-                guard let url = URL(string: model.image) else { return }
-                URLSession.shared.dataTask(with: url) { data, _, _ in
-                    if let data = data, let imageData = UIImage(data: data) {
+                if let url = URL(string: model.image) {
+                    URLSession.shared.dataTask(with: url) { data, _, _ in
+                        print("url \(url)")
+                        guard let data = data, let image = UIImage(data: data) else { return }
                         DispatchQueue.main.async {
-                            self.mainViews.characterImageView.image = imageData
                             self.mainViews.characterName.text = model.name
+                            self.mainViews.characterImageView.image = image
                         }
-                        let newCharacter = CharacterData(context: self.container.viewContext)
-                        newCharacter.image = model.image
-                        newCharacter.name = model.name
-                        do {
-                            try self.container.viewContext.save()
-                        }
-                        catch let error {
-                            print("error when saving to core data \(error)")
-                        }
-                    }
-                }.resume()
+                    }.resume()
+                }
             case .failure(let error):
-                print("error \(error)")
+                print("ERROR! \(error)")
             }
         }
     }
-    
+
+    @objc private func nextRandomCharacter() {
+        let request = CharacterData.fetchRequest()
+        do {
+            guard let lastCharacterInCoreData = try container.viewContext.fetch(request).last else { return }
+            container.viewContext.delete(lastCharacterInCoreData)
+            try container.viewContext.save()
+        }
+        catch {
+            print("error")
+        }
+        createSomeModel(dataSource: .network)
+    }
 }
 

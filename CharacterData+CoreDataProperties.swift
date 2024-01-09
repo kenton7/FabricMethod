@@ -27,6 +27,13 @@ extension CharacterData : Identifiable {
 
 extension CharacterData: CharacterProtocol {
     
+    convenience init(name: String, image: String, context: NSManagedObjectContext) {
+        let entityDescription = NSEntityDescription.entity(forEntityName: "CharacterData", in: context)!
+        self.init(entity: entityDescription, insertInto: context)
+        self.image = image
+        self.name = name
+    }
+    
 }
 
 extension CharacterData {

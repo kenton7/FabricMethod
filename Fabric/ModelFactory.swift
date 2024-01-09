@@ -7,46 +7,55 @@
 
 import Foundation
 
+enum DataSource {
+    case coreData, network
+}
+
 class ModelFactory {
     private let networkService: NetworkService = .shared
-    private let coreDataStack: CoreDataStack = .shared
+    private let coreDataStack = CoreDataStack.shared.containter
     
     static let shared = ModelFactory()
     
     private init() {}
     
-    func makeModel(completion: @escaping (Result<CharacterProtocol, Error>) -> Void) {
-        let requestToCoreData = CharacterData.fetchRequest()
+    func makeModel(dataSource type: DataSource, completion: @escaping (Result<CharacterProtocol, Error>) -> Void) {
         
-        let coreModel = try? coreDataStack.containter.viewContext.fetch(requestToCoreData)
-        if coreModel!.isEmpty || coreModel == nil {
-            let randomID = Int.random(in: 1...826)
-            networkService.getCharacters(id: randomID) { result in
-                print("loading from API")
-                switch result {
-                case .success(let model):
-                    let character = CharacterData(context: self.coreDataStack.containter.viewContext)
-                    character.name = model.name
-                    character.image = model.image
-                    do {
-                        try self.coreDataStack.containter.viewContext.save()
-                    } catch let error {
-                        print("error: \(error.localizedDescription)")
-                    }
-                    completion(.success(model))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        } else {
-            print("get from core data")
+        switch type {
+        case .coreData:
+            let requestToCoreData = CharacterData.fetchRequest()
+            print("Create model from Core Data")
             do {
-                let characters = try coreDataStack.containter.viewContext.fetch(requestToCoreData)
-                completion(.success(CharacterModel(name: characters.last!.name, image: characters.last!.image)))
+                let characters = try coreDataStack.viewContext.fetch(requestToCoreData)
+                //объект по модели кор даты
+                let characterFromCoreData = CharacterData(name: characters.last!.name, image: characters.last!.image, context: coreDataStack.viewContext)
+                completion(.success(characterFromCoreData))
             }
             catch let error {
                 print("error while getting info from core data: \(error)")
             }
+        case .network:
+            print("Create model from Network")
+            let randomID = Int.random(in: 1...826)
+            networkService.getCharacters(id: randomID) { result in
+                switch result {
+                case .success(let model):
+                    //объект с типом Charcter Model
+                    let character = CharacterModel(name: model.name, image: model.image)
+                    do {
+                        //сразу сохраняем в кор дату по модели кор даты
+                        _ = CharacterData(name: character.name, image: character.image, context: self.coreDataStack.viewContext)
+                        print("saved to core data")
+                        try self.coreDataStack.viewContext.save()
+                    } catch let error {
+                        print("error: \(error.localizedDescription)")
+                    }
+                    completion(.success(character))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
         }
+        
     }
 }
